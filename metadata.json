@@ -1,0 +1,5 @@
+{
+  "name": "极简番茄 - Security & Weather",
+  "description": "A high-fidelity React application that mimics the user interfaces of a mobile security dashboard and a minimalist weather application, featuring smooth animations and responsive design.",
+  "requestFramePermissions": []
+}
