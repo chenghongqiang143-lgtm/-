@@ -34,7 +34,7 @@ const SCENES: Record<SceneType, SceneConfig> = {
     particleColor: 'rgba(110, 231, 183, 0.6)',
     particleType: 'firefly',
     defaultAudioUrl: 'https://actions.google.com/sounds/v1/ambiences/forest_day.ogg',
-    icon: <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 16l-4-4h4l-2-4h4l-2-4h6l-2 4h4l-2 4h4l-2 4h4l-2 4h4l-2 4h4l-2 4h4l-2 4h4l-2 4h4l-4 4H7z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 16v6" /></svg>,
+    icon: <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 16l-4-4h4l-2-4h4l-2-4h6l-2 4h4l-2 4h4l-2 4h4l-2 4h4l-2 4h4l-2 4h4l-2 4h4l-2 4h4l-2 4h4l-4 4H7z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 16v6" /></svg>,
     textColor: 'text-gray-900',
     statusColor: 'text-gray-500',
     menuBgClass: 'bg-[#064e3b]/70',
@@ -210,6 +210,10 @@ const WeatherView: React.FC = () => {
   const restRef = useRef(restMinutes);
   const isRestRef = useRef(isRestMode);
   const isActiveRef = useRef(isActive);
+  
+  // Animation Refs
+  const ripplesRef = useRef<{x: number, y: number, r: number, maxR: number, alpha: number}[]>([]);
+  const lastRippleTimeRef = useRef(0);
 
   const [currentTime, setCurrentTime] = useState(new Date());
   const speedFactorRef = useRef(0.15);
@@ -426,9 +430,41 @@ const WeatherView: React.FC = () => {
     return () => clearInterval(interval);
   }, [isAutoSwitch, currentScene]); // Reset timer when scene changes manually or automatically
 
+  const addRipple = (clientX: number, clientY: number, target: HTMLElement) => {
+        const now = Date.now();
+        if (now - lastRippleTimeRef.current < 50) return; // Debounce
+        lastRippleTimeRef.current = now;
+
+        const rect = target.getBoundingClientRect();
+        const x = clientX - rect.left;
+        const y = clientY - rect.top;
+        const w = rect.width;
+        const h = rect.height;
+        const dist = Math.max(
+            Math.hypot(x, y),
+            Math.hypot(w - x, y),
+            Math.hypot(x, h - y),
+            Math.hypot(w - x, h - y)
+        );
+
+        ripplesRef.current.push({
+            x,
+            y,
+            r: 0,
+            maxR: dist * 1.5, // Expand beyond screen
+            alpha: 0.5
+        });
+  };
+
   const onTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.targetTouches[0].clientX;
     touchStartY.current = e.targetTouches[0].clientY; // Capture Start Y
+    
+    addRipple(e.targetTouches[0].clientX, e.targetTouches[0].clientY, e.currentTarget as HTMLElement);
+  };
+
+  const onMouseDown = (e: React.MouseEvent) => {
+      addRipple(e.clientX, e.clientY, e.currentTarget as HTMLElement);
   };
 
   const onTouchEnd = (e: React.TouchEvent) => {
@@ -525,11 +561,15 @@ const WeatherView: React.FC = () => {
     if (config.particleType === 'geometric') pCount = 11;
     if (config.particleType === 'neon_circle') pCount = 7; 
     if (config.particleType === 'zen_circle') pCount = 1; 
-    if (config.particleType === 'progress_bar') pCount = 1; 
+    if (config.particleType === 'progress_bar') pCount = 15; // Decreased from 40 for cleaner look
     if (config.particleType === 'moon_phase') pCount = 60; // 1 Moon + 59 Stars
     if (config.particleType === 'glass_orb') pCount = 6; 
     if (config.particleType === 'bubble') pCount = 30; 
     if (config.particleType === 'ember') pCount = 60; 
+
+    // Shared Progress for smooth bar animation
+    let sharedProgress = 0;
+    let sharedHue = 0;
 
     // Factory Function for Particles
     const createParticle = (index: number) => {
@@ -644,6 +684,15 @@ const WeatherView: React.FC = () => {
                   this.colorProgress = Math.random() * ZEN_PALETTE.length; 
                 } else if (this.type === 'progress_bar') { 
                    this.hue = 0; this.currentProgress = 0;
+                   if (this.index > 0) {
+                       // Rising Bubble Initialization
+                       this.x = Math.random() * width;
+                       this.y = height + Math.random() * 100;
+                       this.vx = 0;
+                       this.vy = -1 - Math.random() * 3;
+                       this.size = 2 + Math.random() * 5;
+                       this.oscillation = Math.random() * Math.PI * 2;
+                   }
                 } else if (this.type === 'moon_phase') { 
                   this.x = width / 2; this.y = height * 0.25; this.size = Math.min(width, height) * 0.55; 
                   this.phase = 0; 
@@ -715,6 +764,42 @@ const WeatherView: React.FC = () => {
                     return;
                 }
 
+                if (this.type === 'progress_bar') {
+                    if (this.index === 0) {
+                        // Main Bar Logic
+                        const periodSeconds = isModeActive ? 300 : 900;
+                        const hueInc = 360 / (periodSeconds * 60); 
+                        sharedHue += hueInc; // Shared hue
+
+                        const totalSeconds = (isRestRef.current ? restRef.current : focusRef.current) * 60;
+                        const currentLeft = timeLeftRef.current;
+                        let targetProgress = 1 - (currentLeft / totalSeconds);
+                        if (!isActiveRef.current && currentLeft === totalSeconds) targetProgress = 0;
+                        
+                        if (Math.abs(targetProgress - sharedProgress) > 0.5) {
+                            sharedProgress = targetProgress;
+                        } else {
+                            sharedProgress += (targetProgress - sharedProgress) * 0.05;
+                        }
+                    } else {
+                        // Bubbles
+                        this.y += this.vy * factor;
+                        this.oscillation += 0.05 * factor;
+                        this.x += Math.sin(this.oscillation) * 0.5 * factor;
+
+                        const safeProgress = Math.max(0, Math.min(1, sharedProgress));
+                        const barHeight = height * safeProgress;
+                        const topY = height - barHeight;
+
+                        if (this.y < topY) {
+                            // Reset Bubble
+                            this.y = height + Math.random() * 100;
+                            this.x = Math.random() * width;
+                        }
+                    }
+                    return;
+                }
+
                 this.x += this.vx * factor;
                 this.y += this.vy * factor;
 
@@ -743,6 +828,7 @@ const WeatherView: React.FC = () => {
                 ctx.fillStyle = config.particleColor.replace(/[\d\.]+\)$/g, `${curOp})`);
                 
                 if (this.type === 'neon_circle') {
+                    // ... (no changes)
                     const isLight = config.menuTheme === 'light';
                     let drawSize = this.size;
                     if (currentScene === 'cityscape' && (this.index === 0 || this.index === 1)) {
@@ -797,6 +883,7 @@ const WeatherView: React.FC = () => {
                     }
 
                 } else if (this.type === 'zen_circle') {
+                    // ... (no changes)
                     const idx1 = Math.floor(this.colorProgress);
                     const idx2 = (idx1 + 1) % ZEN_PALETTE.length;
                     const t = this.colorProgress - idx1;
@@ -809,38 +896,61 @@ const WeatherView: React.FC = () => {
                     ctx.beginPath(); ctx.arc(0, 0, this.size, 0, Math.PI * 2); ctx.fill();
 
                 } else if (this.type === 'progress_bar') {
+                    // Revert Translation to draw full screen elements
                     ctx.restore();
-                    ctx.save();
-                    const periodSeconds = isModeActive ? 60 : 180;
-                    const hueInc = 360 / (periodSeconds * 60); 
-                    this.hue += hueInc; 
-                    const h = this.hue % 360;
-                    // Removed full screen background fill, relying on black CSS bg
                     
-                    const totalSeconds = (isRestRef.current ? restRef.current : focusRef.current) * 60;
-                    const currentLeft = timeLeftRef.current;
-                    let targetProgress = 1 - (currentLeft / totalSeconds);
-                    if (!isActiveRef.current && currentLeft === totalSeconds) targetProgress = 0;
-                    if (Math.abs(targetProgress - this.currentProgress) > 0.5) {
-                        this.currentProgress = targetProgress;
-                    } else {
-                        this.currentProgress += (targetProgress - this.currentProgress) * 0.05;
-                    }
-                    const safeProgress = Math.max(0, Math.min(1, this.currentProgress));
+                    const safeProgress = Math.max(0, Math.min(1, sharedProgress));
                     const barHeight = height * safeProgress;
-                    
-                    // Draw Color Changing Bar
-                    const barGrad = ctx.createLinearGradient(0, height - barHeight, 0, height);
-                    barGrad.addColorStop(0, `hsla(${h}, 80%, 60%, 0.9)`);
-                    barGrad.addColorStop(1, `hsla(${(h + 40) % 360}, 80%, 50%, 0.6)`);
-                    
-                    ctx.fillStyle = barGrad; ctx.fillRect(0, height - barHeight, width, barHeight);
-                    
-                    // Top highlight line
-                    ctx.fillStyle = `hsla(${h}, 90%, 80%, 1)`;
-                    ctx.fillRect(0, height - barHeight, width, 2);
+                    const topY = height - barHeight;
+                    const h = sharedHue % 360;
+
+                    if (this.index === 0) {
+                        // Draw Main Liquid Bar
+                        const barGrad = ctx.createLinearGradient(0, height - barHeight, 0, height);
+                        barGrad.addColorStop(0, `hsla(${h}, 80%, 60%, 0.9)`);
+                        barGrad.addColorStop(1, `hsla(${(h + 40) % 360}, 80%, 50%, 0.8)`);
+                        ctx.fillStyle = barGrad;
+                        
+                        // Reduced amplitude from 12 to 3 for smoother surface
+                        const waveAmp = 3 * Math.min(1, safeProgress * 2); 
+                        const phase = Date.now() / 250;
+
+                        ctx.beginPath();
+                        ctx.moveTo(0, height);
+                        ctx.lineTo(0, topY);
+                        for (let x = 0; x <= width; x += 10) {
+                            ctx.lineTo(x, topY + Math.sin(x * 0.02 + phase) * waveAmp);
+                        }
+                        ctx.lineTo(width, height);
+                        ctx.closePath();
+                        ctx.fill();
+
+                        // Surface Glow Line
+                        ctx.strokeStyle = `hsla(${h}, 90%, 80%, 0.9)`;
+                        ctx.lineWidth = 3;
+                        ctx.beginPath();
+                        for (let x = 0; x <= width; x += 5) {
+                            const y = topY + Math.sin(x * 0.02 + phase) * waveAmp;
+                            if (x === 0) ctx.moveTo(x, y);
+                            else ctx.lineTo(x, y);
+                        }
+                        ctx.stroke();
+
+                    } else {
+                        // Draw Rising Bubbles (Energy)
+                        // Only draw if inside liquid
+                        // Rough check: y > topY + waveAmplitude
+                        if (this.y > topY + 15) {
+                             ctx.fillStyle = `rgba(255, 255, 255, 0.4)`;
+                             ctx.beginPath();
+                             ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                             ctx.fill();
+                        }
+                    }
+                    return; // Skip standard restore
 
                 } else if (this.type === 'moon_phase') {
+                    // ... (no changes)
                     ctx.fillStyle = '#e6e6e6'; 
                     ctx.shadowBlur = 60;
                     ctx.shadowColor = 'rgba(230, 230, 255, 0.5)';
@@ -862,6 +972,7 @@ const WeatherView: React.FC = () => {
                     ctx.fill();
 
                 } else if (this.type === 'glass_orb') {
+                    // ... (no changes)
                     ctx.fillStyle = `hsla(${this.hue}, 80%, 70%, 0.4)`;
                     ctx.filter = 'blur(40px)'; 
                     ctx.beginPath(); ctx.arc(0, 0, this.size, 0, Math.PI * 2); ctx.fill(); ctx.filter = 'none';
@@ -904,17 +1015,13 @@ const WeatherView: React.FC = () => {
 
       // Dynamic Background for Geometry Scene
       if (currentScene === 'geometry') {
+          // ... (no changes)
           const factor = speedFactorRef.current;
-          // Slowly rotate hue - Reduced speed from 0.2 to 0.05
           geoHue += 0.05 * (factor > 0.2 ? factor : 0.2); 
           const h = geoHue % 360;
-          
           const grd = ctx.createLinearGradient(0, 0, 0, height);
-          // High Saturation (80%) for vibrant colors, No white bottom
-          // Shifts hue from Top to Bottom for depth
           grd.addColorStop(0, `hsl(${h}, 80%, 60%)`); 
           grd.addColorStop(1, `hsl(${(h + 40) % 360}, 80%, 50%)`);
-          
           ctx.fillStyle = grd;
           ctx.fillRect(0, 0, width, height);
       }
@@ -925,6 +1032,26 @@ const WeatherView: React.FC = () => {
               p.draw(ctx); 
           }
       });
+      
+      // Draw Ripples
+      if (ripplesRef.current.length > 0) {
+          ctx.save();
+          ripplesRef.current.forEach(r => {
+             // Increased expansion speed from 12 to 35
+             r.r += 35 * (speedFactorRef.current > 0.5 ? 1 : 0.5); 
+             r.alpha = 0.5 * (1 - (r.r / r.maxR)); 
+             if (r.alpha > 0) {
+                 ctx.beginPath();
+                 ctx.arc(r.x, r.y, r.r, 0, Math.PI * 2);
+                 ctx.fillStyle = `rgba(255, 255, 255, ${r.alpha})`;
+                 ctx.fill();
+             }
+          });
+          ctx.restore();
+          // Cleanup finished ripples
+          ripplesRef.current = ripplesRef.current.filter(r => r.alpha > 0);
+      }
+
       animationId = requestAnimationFrame(animate);
     };
     animate();
@@ -986,6 +1113,7 @@ const WeatherView: React.FC = () => {
         if (!isSettingTime && !isSettingConfig && !showMenu) setIsActive(!isActive);
       }}
       onTouchStart={onTouchStart}
+      onMouseDown={onMouseDown} // Add mouse support
       onTouchEnd={onTouchEnd}
     >
       {/* Key prop ensures the audio element is destroyed and recreated when scene changes */}
