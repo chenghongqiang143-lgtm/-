@@ -7,7 +7,7 @@ interface SceneConfig {
   gradient: string;
   particleColor: string;
   particleType: 'line' | 'ember' | 'firefly' | 'star' | 'geometric' | 'bubble' | 'snow' | 'neon_circle' | 'zen_circle' | 'progress_bar' | 'moon_phase' | 'glass_orb';
-  defaultAudioUrl: string; // Renamed from audioUrl to distinguish from custom
+  defaultAudioUrl: string;
   icon: React.ReactNode;
   textColor: string;
   statusColor: string;
@@ -22,7 +22,7 @@ const SCENES: Record<SceneType, SceneConfig> = {
     particleColor: 'rgba(255, 255, 255, 0.4)',
     particleType: 'line',
     defaultAudioUrl: 'https://actions.google.com/sounds/v1/weather/rain_heavy_loud.ogg',
-    icon: <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 19l-1 2m5-2l-1 2m5-2l-1 2" /></svg>,
+    icon: <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 19l-1 2m5-2l-1 2m5-2l-1 2m5-2l-1 2" /></svg>,
     textColor: 'text-gray-900',
     statusColor: 'text-gray-500',
     menuBgClass: 'bg-[#1a2a3a]/70',
@@ -34,7 +34,7 @@ const SCENES: Record<SceneType, SceneConfig> = {
     particleColor: 'rgba(110, 231, 183, 0.6)',
     particleType: 'firefly',
     defaultAudioUrl: 'https://actions.google.com/sounds/v1/ambiences/forest_day.ogg',
-    icon: <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 16l-4-4h4l-2-4h4l-2-4h6l-2 4h4l-2 4h4l-2 4h4l-2 4h4l-2 4h4l-2 4h4l-2 4h4l-2 4h4l-2 4h4l-2 4h4l-4 4H7z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 16v6" /></svg>,
+    icon: <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 16l-4-4h4l-2-4h4l-2-4h6l-2 4h4l-2 4h4l-2 4h4l-2 4h4l-2 4h4l-2 4h4l-2 4h4l-2 4h4l-4 4H7z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 16v6" /></svg>,
     textColor: 'text-gray-900',
     statusColor: 'text-gray-500',
     menuBgClass: 'bg-[#064e3b]/70',
@@ -126,15 +126,15 @@ const SCENES: Record<SceneType, SceneConfig> = {
   },
   eclipse: {
     name: '进度条',
-    gradient: 'from-gray-100 to-gray-200', 
+    gradient: 'from-black to-gray-900', 
     particleColor: '',
     particleType: 'progress_bar',
     defaultAudioUrl: 'https://actions.google.com/sounds/v1/weather/wind_steady.ogg',
     icon: <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>,
-    textColor: 'text-gray-900',
-    statusColor: 'text-gray-500',
-    menuBgClass: 'bg-white/80',
-    menuTheme: 'light'
+    textColor: 'text-white',
+    statusColor: 'text-white/60',
+    menuBgClass: 'bg-[#18181b]/80',
+    menuTheme: 'dark'
   },
   moon: {
     name: '月色变幻',
@@ -173,12 +173,30 @@ const ZEN_PALETTE = [
   [240, 150, 150]  // Soft Red (replacing Cyan)
 ];
 
+// Clock Themes Definition
+interface ClockTheme {
+    id: number;
+    name: string;
+    bg: string;
+    card: string;
+    text: string;
+    divider: string;
+    sub: string;
+    accent: string;
+}
+
+const CLOCK_THEMES: ClockTheme[] = [
+    { id: 0, name: '极简白', bg: 'bg-gray-100', card: 'bg-white', text: 'text-gray-900', divider: 'bg-gray-100/50', sub: 'text-gray-400', accent: 'text-gray-800' },
+    { id: 1, name: '暗夜黑', bg: 'bg-[#000000]', card: 'bg-[#1a1a1a]', text: 'text-[#e5e5e5]', divider: 'bg-black/50', sub: 'text-[#525252]', accent: 'text-white' },
+    { id: 2, name: '米白色', bg: 'bg-[#fcfbf9]', card: 'bg-[#efede6]', text: 'text-[#57534e]', divider: 'bg-[#d6d3d1]/50', sub: 'text-[#a8a29e]', accent: 'text-[#78716c]' }
+];
+
 const WeatherView: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null); // For stopwatch sizing
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const touchStartX = useRef<number | null>(null);
   const touchStartY = useRef<number | null>(null); 
+  const longPressTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   
   const [focusMinutes, setFocusMinutes] = useState(25);
   const [restMinutes, setRestMinutes] = useState(5);
@@ -193,19 +211,17 @@ const WeatherView: React.FC = () => {
   const isRestRef = useRef(isRestMode);
   const isActiveRef = useRef(isActive);
 
-  // Stopwatch Dimensions for Rotation
-  const [containerDims, setContainerDims] = useState({ w: 0, h: 0 });
-  const [landscapeMode, setLandscapeMode] = useState<'CLOCK' | 'STOPWATCH'>('STOPWATCH');
   const [currentTime, setCurrentTime] = useState(new Date());
-  
-  // Stopwatch State
-  const [stopwatchTime, setStopwatchTime] = useState(0); // in ms
-  const [isStopwatchRunning, setIsStopwatchRunning] = useState(false);
-  const stopwatchIntervalRef = useRef<any>(null);
-  const stopwatchStartTimeRef = useRef<number>(0);
-  const stopwatchStoredTimeRef = useRef<number>(0);
-
   const speedFactorRef = useRef(0.15);
+
+  // Clock Mode States
+  const [clockThemeId, setClockThemeId] = useState(0);
+  const [clockDisplayMode, setClockDisplayMode] = useState<'clock' | 'timer'>('clock');
+  const [showThemeSelector, setShowThemeSelector] = useState(false);
+
+  // Stopwatch States
+  const [stopwatchTime, setStopwatchTime] = useState(0); // in milliseconds
+  const [isStopwatchRunning, setIsStopwatchRunning] = useState(false);
 
   useEffect(() => {
     timeLeftRef.current = timeLeft;
@@ -261,7 +277,7 @@ const WeatherView: React.FC = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [isSettingTime, setIsSettingTime] = useState(false);
   const [isSettingConfig, setIsSettingConfig] = useState(false);
-  const [isStopwatchMode, setIsStopwatchMode] = useState(false);
+  const [isClockMode, setIsClockMode] = useState(false);
 
 
   useEffect(() => {
@@ -288,35 +304,23 @@ const WeatherView: React.FC = () => {
       }
   }, [customAudioUrls]);
 
-  // Update Dimensions for Stopwatch Landscape Mode
-  useEffect(() => {
-    const updateDims = () => {
-        if (containerRef.current) {
-             setContainerDims({
-                 w: containerRef.current.clientWidth,
-                 h: containerRef.current.clientHeight
-             });
-        }
-    };
-    
-    updateDims();
-    window.addEventListener('resize', updateDims);
-    
-    // Force update when entering stopwatch mode to ensure dimensions are fresh
-    if (isStopwatchMode) {
-        updateDims();
-    }
-    
-    return () => window.removeEventListener('resize', updateDims);
-  }, [isStopwatchMode]);
-
   // Clock Update Logic
   useEffect(() => {
-      if (isStopwatchMode && landscapeMode === 'CLOCK') {
-          const timer = setInterval(() => setCurrentTime(new Date()), 33); // approx 30fps for smooth ms
-          return () => clearInterval(timer);
-      }
-  }, [isStopwatchMode, landscapeMode]);
+    const timer = setInterval(() => setCurrentTime(new Date()), 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  // Stopwatch Logic
+  useEffect(() => {
+    let interval: ReturnType<typeof setInterval>;
+    if (isStopwatchRunning && clockDisplayMode === 'timer') {
+      const startTime = Date.now() - stopwatchTime;
+      interval = setInterval(() => {
+        setStopwatchTime(Date.now() - startTime);
+      }, 30); // Update every 30ms for smooth UI
+    }
+    return () => clearInterval(interval);
+  }, [isStopwatchRunning, clockDisplayMode]); // Removed stopwatchTime dependency to avoid drift/infinite loop on resume
 
   // Audio Control
   useEffect(() => {
@@ -340,44 +344,22 @@ const WeatherView: React.FC = () => {
         audio.pause();
       }
     }
-  }, [isActive, isMuted, currentScene, customAudioUrls, isStopwatchMode]);
+  }, [isActive, isMuted, currentScene, customAudioUrls, isClockMode]);
 
-  // Timer Logic
+  // Timer Logic (Pomodoro)
   useEffect(() => {
     let interval: any = null;
-    if (isActive && timeLeft > 0 && !isStopwatchMode) {
+    if (isActive && timeLeft > 0) { // Keep timer running even in clock mode if active
       interval = setInterval(() => {
         setTimeLeft((time) => time - 1);
       }, 1000);
-    } else if (timeLeft === 0 && isActive && !isStopwatchMode) {
+    } else if (timeLeft === 0 && isActive) {
       setIsActive(false);
       setIsRestMode(!isRestMode);
       clearInterval(interval);
     }
     return () => clearInterval(interval);
-  }, [isActive, timeLeft, isRestMode, isStopwatchMode]);
-
-  // Stopwatch Logic
-  useEffect(() => {
-      if (isStopwatchRunning) {
-          stopwatchStartTimeRef.current = Date.now();
-          stopwatchIntervalRef.current = setInterval(() => {
-              const now = Date.now();
-              const elapsed = now - stopwatchStartTimeRef.current;
-              setStopwatchTime(stopwatchStoredTimeRef.current + elapsed);
-          }, 33); // ~30fps update
-      } else {
-          clearInterval(stopwatchIntervalRef.current);
-          stopwatchStoredTimeRef.current = stopwatchTime;
-      }
-      return () => clearInterval(stopwatchIntervalRef.current);
-  }, [isStopwatchRunning]);
-
-  const handleStopwatchReset = () => {
-      setIsStopwatchRunning(false);
-      setStopwatchTime(0);
-      stopwatchStoredTimeRef.current = 0;
-  };
+  }, [isActive, timeLeft, isRestMode]); 
 
   const handleFileImport = (e: React.ChangeEvent<HTMLInputElement>, sceneKey: SceneType) => {
       const file = e.target.files?.[0];
@@ -419,7 +401,7 @@ const WeatherView: React.FC = () => {
   };
 
   const navigateScene = (direction: 1 | -1) => {
-    if (isStopwatchMode) return; // Disable swipe in stopwatch mode
+    if (isClockMode) return; // Disable swipe in clock mode
     const currentIndex = sceneOrder.indexOf(currentScene);
     let nextIndex = currentIndex + direction;
     if (nextIndex >= sceneOrder.length) nextIndex = 0;
@@ -445,11 +427,6 @@ const WeatherView: React.FC = () => {
   }, [isAutoSwitch, currentScene]); // Reset timer when scene changes manually or automatically
 
   const onTouchStart = (e: React.TouchEvent) => {
-    if (isStopwatchMode) {
-        touchStartX.current = e.targetTouches[0].clientX;
-        touchStartY.current = e.targetTouches[0].clientY;
-        return;
-    }
     touchStartX.current = e.targetTouches[0].clientX;
     touchStartY.current = e.targetTouches[0].clientY; // Capture Start Y
   };
@@ -466,15 +443,18 @@ const WeatherView: React.FC = () => {
     // Check dominant direction
     if (Math.abs(diffX) > Math.abs(diffY)) {
       // Horizontal Swipe
-      if (isStopwatchMode) return; // Disable scene switch in stopwatch mode
       
       if (Math.abs(diffX) > 50) {
-        if (diffX > 0) {
-          // Swiped Left -> Next
-          navigateScene(1);
+        if (isClockMode) {
+            // New Logic: Swipe to toggle Clock/Timer in Clock Mode
+            setClockDisplayMode(prev => prev === 'clock' ? 'timer' : 'clock');
         } else {
-          // Swiped Right -> Prev
-          navigateScene(-1);
+            // Normal Scene Navigation
+            if (diffX > 0) {
+              navigateScene(1);
+            } else {
+              navigateScene(-1);
+            }
         }
       }
     } else {
@@ -484,13 +464,13 @@ const WeatherView: React.FC = () => {
 
       if (diffY > 50) {
          // Swipe Up
-         if (!showMenu && !isStopwatchMode) {
-             setIsStopwatchMode(true);
+         if (!showMenu && !isClockMode) {
+             setIsClockMode(true);
          }
       } else if (diffY < -50) {
          // Swipe Down
-         if (isStopwatchMode) {
-             setIsStopwatchMode(false);
+         if (isClockMode) {
+             setIsClockMode(false);
          } else if (!showMenu) {
              setShowMenu(true);
          }
@@ -507,8 +487,27 @@ const WeatherView: React.FC = () => {
     setShowMenu(false);
   };
 
+  const handleLongPressStart = () => {
+    longPressTimer.current = setTimeout(() => {
+        setShowThemeSelector(true);
+    }, 800); // 800ms long press triggers theme menu
+  };
+
+  const handleLongPressEnd = () => {
+    if (longPressTimer.current) {
+        clearTimeout(longPressTimer.current);
+        longPressTimer.current = null;
+    }
+  };
+
+  const toggleStopwatch = () => {
+    if (clockDisplayMode === 'timer') {
+      setIsStopwatchRunning(!isStopwatchRunning);
+    }
+  };
+
   useEffect(() => {
-    if (isStopwatchMode) return; // Do not animate particles in stopwatch mode to save battery/focus
+    if (isClockMode) return; // Do not animate particles in clock mode to save battery/focus
 
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -816,10 +815,7 @@ const WeatherView: React.FC = () => {
                     const hueInc = 360 / (periodSeconds * 60); 
                     this.hue += hueInc; 
                     const h = this.hue % 360;
-                    const bgGrad = ctx.createLinearGradient(0, 0, width, height);
-                    bgGrad.addColorStop(0, `hsl(${h}, 80%, 85%)`);
-                    bgGrad.addColorStop(1, `hsl(${(h + 40) % 360}, 80%, 75%)`);
-                    ctx.fillStyle = bgGrad; ctx.fillRect(0, 0, width, height);
+                    // Removed full screen background fill, relying on black CSS bg
                     
                     const totalSeconds = (isRestRef.current ? restRef.current : focusRef.current) * 60;
                     const currentLeft = timeLeftRef.current;
@@ -832,10 +828,17 @@ const WeatherView: React.FC = () => {
                     }
                     const safeProgress = Math.max(0, Math.min(1, this.currentProgress));
                     const barHeight = height * safeProgress;
+                    
+                    // Draw Color Changing Bar
                     const barGrad = ctx.createLinearGradient(0, height - barHeight, 0, height);
-                    barGrad.addColorStop(0, 'rgba(255, 255, 255, 0.85)');
-                    barGrad.addColorStop(1, 'rgba(255, 255, 255, 0.3)');
+                    barGrad.addColorStop(0, `hsla(${h}, 80%, 60%, 0.9)`);
+                    barGrad.addColorStop(1, `hsla(${(h + 40) % 360}, 80%, 50%, 0.6)`);
+                    
                     ctx.fillStyle = barGrad; ctx.fillRect(0, height - barHeight, width, barHeight);
+                    
+                    // Top highlight line
+                    ctx.fillStyle = `hsla(${h}, 90%, 80%, 1)`;
+                    ctx.fillRect(0, height - barHeight, width, 2);
 
                 } else if (this.type === 'moon_phase') {
                     ctx.fillStyle = '#e6e6e6'; 
@@ -926,7 +929,7 @@ const WeatherView: React.FC = () => {
     };
     animate();
     return () => cancelAnimationFrame(animationId);
-  }, [currentScene, isStopwatchMode]);
+  }, [currentScene, isClockMode]);
 
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
@@ -934,67 +937,52 @@ const WeatherView: React.FC = () => {
     return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
   };
 
-  const getStopwatchParts = (ms: number) => {
-      const totalSeconds = Math.floor(ms / 1000);
-      const hours = Math.floor(totalSeconds / 3600);
-      const minutes = Math.floor((totalSeconds % 3600) / 60);
-      const seconds = totalSeconds % 60;
-      const milliseconds = Math.floor((ms % 1000) / 10); // 2 digits
-      return {
-          h: hours.toString().padStart(2, '0'),
-          m: minutes.toString().padStart(2, '0'),
-          s: seconds.toString().padStart(2, '0'),
-          ms: milliseconds.toString().padStart(2, '0')
-      };
-  };
-
   // Format Clock Time
   const getClockParts = (date: Date) => {
-      const h = date.getHours().toString().padStart(2, '0');
+      const h = date.getHours();
       const m = date.getMinutes().toString().padStart(2, '0');
       const s = date.getSeconds().toString().padStart(2, '0');
-      const ms = Math.floor(date.getMilliseconds() / 10).toString().padStart(2, '0');
-      return { h, m, s, ms };
+      const isPm = h >= 12;
+      const h12 = h % 12 || 12; // Convert to 12-hour format
+      return { 
+          h: h12.toString().padStart(2, '0'), 
+          m, 
+          s, 
+          ampm: isPm ? 'PM' : 'AM' 
+      };
   };
 
   const activeConfig = SCENES[currentScene];
   const activeAudioUrl = customAudioUrls[currentScene] || activeConfig.defaultAudioUrl;
   const isLightMenu = activeConfig.menuTheme === 'light';
 
-  // Helper for Date/Weekday
-  const getStopwatchDate = () => {
-      const now = new Date();
-      const days = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
-      const dayName = days[now.getDay()];
-      const month = (now.getMonth() + 1).toString().padStart(2, '0');
-      const date = now.getDate().toString().padStart(2, '0');
-      return { dayName, dateStr: `${month}${date}` };
-  };
-  const { dayName, dateStr } = getStopwatchDate();
-  
-  const stopwatchParts = getStopwatchParts(stopwatchTime);
   const clockParts = getClockParts(currentTime);
+  const currentTheme = CLOCK_THEMES[clockThemeId];
+
+  // Get data for Clock Mode based on display mode (Clock vs Timer)
+  let displayH = clockParts.h;
+  let displayM = clockParts.m;
+  let displayS = clockParts.s;
+  let displayLabel = clockParts.ampm;
+
+  if (clockDisplayMode === 'timer') {
+      // Stopwatch logic: minutes and seconds
+      const totalSeconds = Math.floor(stopwatchTime / 1000);
+      const mins = Math.floor(totalSeconds / 60);
+      const secs = totalSeconds % 60;
+      const ms = Math.floor((stopwatchTime % 1000) / 10); // Hundredths
+
+      displayH = mins.toString().padStart(2, '0');
+      displayM = secs.toString().padStart(2, '0');
+      displayS = ms.toString().padStart(2, '0'); // Show MS in badge
+      displayLabel = isStopwatchRunning ? "RUN" : "STOP";
+  }
   
-  // Blinking red dot logic (500ms on, 500ms off)
-  const isRedDotVisible = isStopwatchRunning && (Math.floor(stopwatchTime / 500) % 2 === 0);
-
-  // Dynamic Pixel Style Generator
-  const getPixelStyle = (isActive: boolean = true) => ({
-      background: 'linear-gradient(to right, rgba(0,0,0,0.85) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.85) 1px, transparent 1px)',
-      backgroundSize: '2px 2px', // Thinner pixels
-      backgroundColor: isActive ? 'white' : 'rgba(255,255,255,0.3)', // Active white, Inactive dimmed
-      WebkitBackgroundClip: 'text',
-      backgroundClip: 'text',
-      color: 'transparent',
-      textShadow: isActive ? '0 0 5px rgba(255,255,255,0.3)' : 'none'
-  });
-
   return (
     <div 
-      ref={containerRef}
       className="relative h-full w-full overflow-hidden select-none bg-black flex flex-col pointer-events-auto"
       onClick={() => {
-        if (isStopwatchMode) return;
+        if (isClockMode) return;
         if (!isSettingTime && !isSettingConfig && !showMenu) setIsActive(!isActive);
       }}
       onTouchStart={onTouchStart}
@@ -1010,181 +998,86 @@ const WeatherView: React.FC = () => {
         playsInline
       />
 
-      {/* Stopwatch Overlay Mode - Rectangular Pixel Style with Transition */}
-      <div className={`absolute inset-0 z-[200] bg-black flex items-center justify-center overflow-hidden transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${isStopwatchMode ? 'translate-y-0' : 'translate-y-full'}`}>
-             {/* Rotating container for Landscape Effect */}
-             <div 
-                className="relative flex flex-col items-center justify-center bg-black" 
-                style={{
-                    // Swap width/height for rotation
-                    width: containerDims.h,
-                    height: containerDims.w,
-                    transform: 'rotate(90deg)',
-                    // Rectangular Grid Effect Background
-                    backgroundImage: 'linear-gradient(rgba(40,40,40,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(40,40,40,0.5) 1px, transparent 1px)',
-                    backgroundSize: '5px 5px', 
-                    backgroundColor: '#050505'
-                }}
-             >
-                 {/* Main Content Area - 18:9 Ratio Constraint Container */}
-                 <div className="relative w-full h-full max-w-[180vh] aspect-[18/9] flex flex-col items-center justify-center p-[4vmin]">
-                     
-                     {/* CENTERED BLOCK Wrapper */}
-                     <div className="flex flex-col items-center justify-center w-fit">
+      {/* Clock Mode Overlay (Flip Clock Style) */}
+      <div className={`absolute inset-0 z-[200] ${currentTheme.bg} flex items-center justify-center transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] ${isClockMode ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'}`}>
+          {/* Rotate Wrapper for Pseudo-Landscape on Mobile Portrait */}
+          <div className="relative w-full h-full transform transition-transform duration-500 md:rotate-0 rotate-90 md:w-full md:h-full w-[100vh] h-[100vw] flex flex-col justify-center items-center">
+              
+              {/* Interaction Layer for Long Press / Double Click */}
+              <div 
+                  className="flex items-center gap-[4vh] md:gap-12"
+                  onMouseDown={handleLongPressStart}
+                  onMouseUp={handleLongPressEnd}
+                  onMouseLeave={handleLongPressEnd}
+                  onTouchStart={handleLongPressStart}
+                  onTouchEnd={handleLongPressEnd}
+                  onDoubleClick={toggleStopwatch}
+              >
+                  {/* Left Card (Hour or Min) */}
+                  <div className={`relative w-[40vh] h-[40vh] max-w-[82vw] max-h-[82vw] md:w-[35vw] md:h-[35vw] md:max-w-[50vh] md:max-h-[50vh] ${currentTheme.card} rounded-[3rem] shadow-2xl flex items-center justify-center overflow-hidden transition-colors duration-500`}>
+                       {/* Label */}
+                       <span className={`absolute top-4 left-6 text-xl md:text-3xl font-bold ${currentTheme.accent} font-sans tracking-widest`}>{displayLabel}</span>
+                       {/* Number */}
+                       <span className={`text-[24vh] md:text-[22vw] font-bold ${currentTheme.text} leading-none tracking-tighter font-sans select-none`}>{displayH}</span>
+                       {/* Divider */}
+                       <div className={`absolute top-1/2 left-0 w-full h-[2px] ${currentTheme.divider}`}></div>
+                  </div>
 
-                         {/* 1. Top Section: Switcher (Left) & Date (Right) Justified */}
-                         <div className="w-full flex items-end justify-between mb-[2vmin]">
-                             {/* Switcher */}
-                             <div className="flex items-center space-x-[4vmin]">
-                                  <button 
-                                    onClick={(e) => { e.stopPropagation(); setLandscapeMode('STOPWATCH'); }}
-                                    className={`text-[6vmin] uppercase tracking-widest leading-none hover:opacity-100 transition-all`}
-                                    style={{ 
-                                        fontFamily: '"Jersey 10", sans-serif',
-                                        ...getPixelStyle(landscapeMode === 'STOPWATCH')
-                                    }}
-                                  >
-                                     秒表
-                                  </button>
-                                  <button 
-                                    onClick={(e) => { e.stopPropagation(); setLandscapeMode('CLOCK'); }}
-                                    className={`text-[6vmin] uppercase tracking-widest leading-none hover:opacity-100 transition-all`}
-                                    style={{ 
-                                        fontFamily: '"Jersey 10", sans-serif',
-                                        ...getPixelStyle(landscapeMode === 'CLOCK')
-                                    }}
-                                  >
-                                     时钟
-                                  </button>
-                             </div>
+                  {/* Right Card (Min or Sec) */}
+                  <div className={`relative w-[40vh] h-[40vh] max-w-[82vw] max-h-[82vw] md:w-[35vw] md:h-[35vw] md:max-w-[50vh] md:max-h-[50vh] ${currentTheme.card} rounded-[3rem] shadow-2xl flex items-center justify-center overflow-hidden transition-colors duration-500`}>
+                       {/* Number */}
+                       <span className={`text-[24vh] md:text-[22vw] font-bold ${currentTheme.text} leading-none tracking-tighter font-sans select-none`}>{displayM}</span>
+                       {/* Divider */}
+                       <div className={`absolute top-1/2 left-0 w-full h-[2px] ${currentTheme.divider}`}></div>
+                       
+                       {/* Seconds/MS Floating Badge */}
+                       {(clockDisplayMode === 'clock' || clockDisplayMode === 'timer') && (
+                           <div className={`absolute bottom-6 right-6 ${currentTheme.bg} shadow-md border ${currentTheme.divider} rounded-xl px-4 py-2`}>
+                               <span className={`text-2xl md:text-4xl font-bold ${currentTheme.text} font-mono tracking-widest`}>{displayS}</span>
+                           </div>
+                       )}
+                  </div>
+              </div>
 
-                             {/* Date Info */}
-                             <div className="flex items-center space-x-[2vmin]">
-                                <span 
-                                    className="leading-none tracking-widest text-white/90"
-                                    style={{ fontFamily: '"Jersey 10", sans-serif', fontWeight: 400, fontSize: '6vmin', ...getPixelStyle(true) }}
-                                >
-                                    {dayName}
-                                </span>
-                                <span 
-                                    className="leading-none tracking-widest text-white/90"
-                                    style={{ fontFamily: '"Jersey 10", sans-serif', fontWeight: 400, fontSize: '6vmin', ...getPixelStyle(true) }}
-                                >
-                                    {dateStr}
-                                </span>
-                             </div>
-                         </div>
+              <div className="text-center animate-pulse z-20 mt-8">
+                   <p className={`text-xs ${currentTheme.sub} tracking-[0.3em] font-medium`}>
+                      {clockDisplayMode === 'timer' ? '双击启停 · 左右滑动切换' : '长按换肤 · 左右滑动切换'}
+                   </p>
+              </div>
 
-                         {/* 2. Time Section (Main width anchor) */}
-                         <div 
-                            className="leading-none tracking-widest flex items-baseline justify-center whitespace-nowrap mb-[4vmin]"
-                            style={{ fontFamily: '"Jersey 10", sans-serif', fontWeight: 400, fontSize: '28vmin', ...getPixelStyle(true) }}
-                         >
-                             {landscapeMode === 'STOPWATCH' ? (
-                                <div className="flex items-baseline justify-center">
-                                    {/* Hours */}
-                                    <div className="flex">
-                                        <div className="w-[14vmin] text-center flex justify-center">{stopwatchParts.h[0]}</div>
-                                        <div className="w-[14vmin] text-center flex justify-center">{stopwatchParts.h[1]}</div>
-                                    </div>
-                                    <div className="w-[4vmin] text-center text-white/50 flex justify-center">:</div>
-                                    {/* Minutes */}
-                                    <div className="flex">
-                                        <div className="w-[14vmin] text-center flex justify-center">{stopwatchParts.m[0]}</div>
-                                        <div className="w-[14vmin] text-center flex justify-center">{stopwatchParts.m[1]}</div>
-                                    </div>
-                                    <div className="w-[4vmin] text-center text-white/50 flex justify-center">:</div>
-                                    {/* Seconds */}
-                                    <div className="flex">
-                                        <div className="w-[14vmin] text-center flex justify-center">{stopwatchParts.s[0]}</div>
-                                        <div className="w-[14vmin] text-center flex justify-center">{stopwatchParts.s[1]}</div>
-                                    </div>
-                                    <div className="w-[4vmin] text-center text-white/50 flex justify-center">.</div>
-                                    {/* Milliseconds */}
-                                    <div className="flex">
-                                        <div className="w-[14vmin] text-center flex justify-center">{stopwatchParts.ms[0]}</div>
-                                        <div className="w-[14vmin] text-center flex justify-center">{stopwatchParts.ms[1]}</div>
-                                    </div>
-                                    
-                                    {/* Red Blinking Dot */}
-                                    <div className="w-[4vmin] flex items-end justify-center pb-[2vmin]">
-                                        <div className={`w-[4vmin] h-[4vmin] bg-red-600 rounded-sm shadow-[0_0_15px_rgba(220,38,38,0.8)] transition-opacity duration-75 ${isRedDotVisible ? 'opacity-100' : 'opacity-10'}`} />
-                                    </div>
-                                </div>
-                             ) : (
-                                 <div className="flex items-baseline justify-center">
-                                    {/* Hours */}
-                                    <div className="flex">
-                                        <div className="w-[14vmin] text-center flex justify-center">{clockParts.h[0]}</div>
-                                        <div className="w-[14vmin] text-center flex justify-center">{clockParts.h[1]}</div>
-                                    </div>
-                                    <div className="w-[4vmin] text-center text-white/50 animate-pulse flex justify-center">:</div>
-                                    {/* Minutes */}
-                                    <div className="flex">
-                                        <div className="w-[14vmin] text-center flex justify-center">{clockParts.m[0]}</div>
-                                        <div className="w-[14vmin] text-center flex justify-center">{clockParts.m[1]}</div>
-                                    </div>
-                                    <div className="w-[4vmin] text-center text-white/50 animate-pulse flex justify-center">:</div>
-                                    {/* Seconds */}
-                                    <div className="flex">
-                                        <div className="w-[14vmin] text-center flex justify-center">{clockParts.s[0]}</div>
-                                        <div className="w-[14vmin] text-center flex justify-center">{clockParts.s[1]}</div>
-                                    </div>
-                                    
-                                    <div className="w-[4vmin] text-center text-white/50 flex justify-center">.</div>
+              <button 
+                 onClick={(e) => { e.stopPropagation(); setIsClockMode(false); }}
+                 className="absolute bottom-8 right-12 md:bottom-12 md:right-12 text-gray-400 hover:text-gray-600 transition-colors z-50"
+                 style={{ bottom: '30px', right: '30px' }} // Manual positioning override to ensure it's not hidden
+              >
+                 <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+              </button>
+          </div>
 
-                                    {/* MS */}
-                                    <div className="flex">
-                                        <div className="w-[14vmin] text-center flex justify-center">{clockParts.ms[0]}</div>
-                                        <div className="w-[14vmin] text-center flex justify-center">{clockParts.ms[1]}</div>
-                                    </div>
-                                    {/* Spacer for visual balance with stopwatch dot */}
-                                    <div className="w-[4vmin]" />
-                                 </div>
-                             )}
-                         </div>
-
-                         {/* 3. Controls (Centered relative to Time) */}
-                         <div className="w-full flex items-center justify-between">
-                             {landscapeMode === 'STOPWATCH' ? (
-                                 <>
-                                     <button 
-                                        onClick={(e) => { e.stopPropagation(); setIsStopwatchRunning(!isStopwatchRunning); }}
-                                        className="text-red-600 uppercase tracking-[0.2em] hover:text-red-500 transition-colors"
-                                        style={{ fontFamily: '"Jersey 10", sans-serif', fontSize: '6vmin' }}
-                                     >
-                                         {isStopwatchRunning ? 'STOP' : 'START'}
-                                     </button>
-                                     <button 
-                                        onClick={(e) => { e.stopPropagation(); handleStopwatchReset(); }}
-                                        className="text-white/70 uppercase tracking-[0.2em] hover:text-white transition-colors"
-                                        style={{ fontFamily: '"Jersey 10", sans-serif', fontSize: '6vmin' }}
-                                     >
-                                         RESET
-                                     </button>
-                                     <button 
-                                        onClick={(e) => { e.stopPropagation(); setIsStopwatchMode(false); }}
-                                        className="text-white/40 uppercase tracking-[0.2em] hover:text-white transition-colors"
-                                        style={{ fontFamily: '"Jersey 10", sans-serif', fontSize: '6vmin' }}
-                                     >
-                                         EXIT
-                                     </button>
-                                 </>
-                             ) : (
-                                 <div className="w-full flex justify-end">
-                                     <button 
-                                        onClick={(e) => { e.stopPropagation(); setIsStopwatchMode(false); }}
-                                        className="text-white/40 uppercase tracking-[0.2em] hover:text-white transition-colors"
-                                        style={{ fontFamily: '"Jersey 10", sans-serif', fontSize: '6vmin' }}
-                                     >
-                                         EXIT
-                                     </button>
-                                 </div>
-                             )}
-                         </div>
-                     </div>
-                 </div>
-             </div>
+          {/* Theme Selector Modal */}
+          {showThemeSelector && (
+              <div 
+                className="absolute inset-0 z-[210] bg-black/60 backdrop-blur-sm flex items-center justify-center animate-in fade-in duration-300"
+                onClick={() => setShowThemeSelector(false)}
+              >
+                  {/* Rotate Modal Content too for consistent orientation */}
+                  <div className="transform md:rotate-0 rotate-90 bg-white/90 backdrop-blur-xl p-8 rounded-[3rem] shadow-2xl flex flex-col items-center max-w-sm" onClick={e => e.stopPropagation()}>
+                       <h3 className="text-gray-500 text-xs font-bold uppercase tracking-[0.3em] mb-6">选择主题</h3>
+                       <div className="grid grid-cols-3 gap-6">
+                           {CLOCK_THEMES.map((theme) => (
+                               <button 
+                                  key={theme.id}
+                                  onClick={() => { setClockThemeId(theme.id); setShowThemeSelector(false); }}
+                                  className={`w-16 h-16 rounded-full flex items-center justify-center shadow-lg transition-transform hover:scale-110 active:scale-95 border-2 ${clockThemeId === theme.id ? 'border-blue-500' : 'border-transparent'}`}
+                                  style={{ background: theme.id === 1 ? '#000' : theme.id === 2 ? '#faf9f6' : '#f3f4f6' }}
+                               >
+                                   {clockThemeId === theme.id && <div className="w-2 h-2 rounded-full bg-blue-500 box-content border-2 border-white" />}
+                               </button>
+                           ))}
+                       </div>
+                  </div>
+              </div>
+          )}
       </div>
 
       {/* Background Layers */}
@@ -1213,7 +1106,7 @@ const WeatherView: React.FC = () => {
             setShowMenu(true);
           }}
         >
-          {!showMenu && !isStopwatchMode && (
+          {!showMenu && !isClockMode && (
             <div className="flex flex-col items-center space-y-2 opacity-30 hover:opacity-100 transition-all duration-300 transform translate-y-[-10px]">
               <div className={`w-14 h-1 rounded-full ${isLightMenu ? 'bg-black/20' : 'bg-white/60'}`}></div>
             </div>
@@ -1402,18 +1295,17 @@ const WeatherView: React.FC = () => {
                 >
                   <span className="text-[10px] uppercase font-bold tracking-wider">高级设置</span>
                 </button>
-                {/* Stopwatch Button - Text Only */}
+                {/* Clock Button - Text Only */}
                 <button
                   onClick={() => {
                       setShowMenu(false);
-                      setIsStopwatchMode(true);
-                      setIsActive(false); // Pause pomodoro if running
+                      setIsClockMode(true);
                   }}
                   className={`p-5 rounded-[28px] flex-1 flex flex-col items-center justify-center ${
                     isLightMenu ? 'text-black/40 hover:bg-black/5' : 'text-white/40 hover:bg-white/10'
                   }`}
                 >
-                  <span className="text-[10px] uppercase font-bold tracking-wider">秒表模式</span>
+                  <span className="text-[10px] uppercase font-bold tracking-wider">时钟模式</span>
                 </button>
               </div>
               
