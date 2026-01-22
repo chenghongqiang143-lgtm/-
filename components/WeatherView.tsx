@@ -22,7 +22,7 @@ const SCENES: Record<SceneType, SceneConfig> = {
     particleColor: 'rgba(255, 255, 255, 0.4)',
     particleType: 'line',
     defaultAudioUrl: 'https://actions.google.com/sounds/v1/weather/rain_heavy_loud.ogg',
-    icon: <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 19l-1 2m5-2l-1 2m5-2l-1 2m5-2l-1 2" /></svg>,
+    icon: <svg className="w-5 h-5 md:w-8 md:h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 19l-1 2m5-2l-1 2m5-2l-1 2m5-2l-1 2" /></svg>,
     textColor: 'text-gray-900',
     statusColor: 'text-gray-500',
     menuBgClass: 'bg-[#1a2a3a]/70',
@@ -34,7 +34,7 @@ const SCENES: Record<SceneType, SceneConfig> = {
     particleColor: 'rgba(110, 231, 183, 0.6)',
     particleType: 'firefly',
     defaultAudioUrl: 'https://actions.google.com/sounds/v1/ambiences/forest_day.ogg',
-    icon: <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 16l-4-4h4l-2-4h4l-2-4h6l-2 4h4l-2 4h4l-2 4h4l-2 4h4l-2 4h4l-2 4h4l-2 4h4l-2 4h4l-2 4h4l-4 4H7z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 16v6" /></svg>,
+    icon: <svg className="w-5 h-5 md:w-8 md:h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 16l-4-4h4l-2-4h4l-2-4h6l-2 4h4l-2 4h4l-2 4h4l-2 4h4l-2 4h4l-2 4h4l-4 4H7z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 16v6" /></svg>,
     textColor: 'text-gray-900',
     statusColor: 'text-gray-500',
     menuBgClass: 'bg-[#064e3b]/70',
@@ -46,7 +46,7 @@ const SCENES: Record<SceneType, SceneConfig> = {
     particleColor: 'rgba(255, 160, 50, 0.8)',
     particleType: 'ember',
     defaultAudioUrl: 'https://actions.google.com/sounds/v1/ambiences/fire.ogg',
-    icon: <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z" /></svg>,
+    icon: <svg className="w-5 h-5 md:w-8 md:h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z" /></svg>,
     textColor: 'text-white',
     statusColor: 'text-white/60',
     menuBgClass: 'bg-[#2b0a0a]/70',
@@ -58,7 +58,7 @@ const SCENES: Record<SceneType, SceneConfig> = {
     particleColor: 'rgba(255, 255, 255, 0.8)',
     particleType: 'star',
     defaultAudioUrl: 'https://actions.google.com/sounds/v1/ambiences/night_time.ogg',
-    icon: <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.382-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" /></svg>,
+    icon: <svg className="w-5 h-5 md:w-8 md:h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.382-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" /></svg>,
     textColor: 'text-white',
     statusColor: 'text-white/60',
     menuBgClass: 'bg-[#020617]/70',
@@ -70,7 +70,7 @@ const SCENES: Record<SceneType, SceneConfig> = {
     particleColor: 'rgba(255, 255, 255, 0.15)',
     particleType: 'geometric',
     defaultAudioUrl: 'https://actions.google.com/sounds/v1/science_fiction/scifi_drone_loud.ogg',
-    icon: <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" /></svg>,
+    icon: <svg className="w-5 h-5 md:w-8 md:h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" /></svg>,
     textColor: 'text-white',
     statusColor: 'text-white/80',
     menuBgClass: 'bg-[#1e293b]/70',
@@ -82,7 +82,7 @@ const SCENES: Record<SceneType, SceneConfig> = {
     particleColor: '', 
     particleType: 'neon_circle',
     defaultAudioUrl: 'https://actions.google.com/sounds/v1/ambiences/city_ambience.ogg',
-    icon: <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 9v10m0-10a4 4 0 110-8 4 4 0 010 8zm0 0a4 4 0 01-4 4h8a4 4 0 01-4-4z" /></svg>,
+    icon: <svg className="w-5 h-5 md:w-8 md:h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 9v10m0-10a4 4 0 110-8 4 4 0 010 8zm0 0a4 4 0 01-4 4h8a4 4 0 01-4-4z" /></svg>,
     textColor: 'text-gray-900',
     statusColor: 'text-gray-500',
     menuBgClass: 'bg-white/80',
@@ -94,7 +94,7 @@ const SCENES: Record<SceneType, SceneConfig> = {
     particleColor: 'rgba(255, 255, 255, 0.3)',
     particleType: 'bubble',
     defaultAudioUrl: 'https://actions.google.com/sounds/v1/ambiences/waves_crashing_on_shore.ogg',
-    icon: <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 14.25c2.25 2 4.75 2 7 0 2.25-2 4.75-2 7 0" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 9.75c2.25 2 4.75 2 7 0 2.25-2 4.75-2 7 0" /></svg>,
+    icon: <svg className="w-5 h-5 md:w-8 md:h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 14.25c2.25 2 4.75 2 7 0 2.25-2 4.75-2 7 0" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 9.75c2.25 2 4.75 2 7 0 2.25-2 4.75-2 7 0" /></svg>,
     textColor: 'text-white',
     statusColor: 'text-white/60',
     menuBgClass: 'bg-[#1e3a8a]/70',
@@ -106,7 +106,7 @@ const SCENES: Record<SceneType, SceneConfig> = {
     particleColor: 'rgba(255, 255, 255, 0.9)',
     particleType: 'snow',
     defaultAudioUrl: 'https://actions.google.com/sounds/v1/weather/blizzard.ogg',
-    icon: <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 3v18M3 12h18m-2.5-6.5L5.5 18.5M18.5 18.5L5.5 5.5" /></svg>,
+    icon: <svg className="w-5 h-5 md:w-8 md:h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 3v18M3 12h18m-2.5-6.5L5.5 18.5M18.5 18.5L5.5 5.5" /></svg>,
     textColor: 'text-gray-900',
     statusColor: 'text-gray-500',
     menuBgClass: 'bg-[#475569]/70',
@@ -118,7 +118,7 @@ const SCENES: Record<SceneType, SceneConfig> = {
     particleColor: '',
     particleType: 'zen_circle',
     defaultAudioUrl: 'https://actions.google.com/sounds/v1/water/stream_flowing.ogg',
-    icon: <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M20.24 12.24a6 6 0 00-8.49-8.49L5 10.5V19h8.5l6.74-6.76z" /></svg>,
+    icon: <svg className="w-5 h-5 md:w-8 md:h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M20.24 12.24a6 6 0 00-8.49-8.49L5 10.5V19h8.5l6.74-6.76z" /></svg>,
     textColor: 'text-gray-900',
     statusColor: 'text-gray-500',
     menuBgClass: 'bg-[#f0f0f0]/70',
@@ -130,7 +130,7 @@ const SCENES: Record<SceneType, SceneConfig> = {
     particleColor: '',
     particleType: 'progress_bar',
     defaultAudioUrl: 'https://actions.google.com/sounds/v1/weather/wind_steady.ogg',
-    icon: <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>,
+    icon: <svg className="w-5 h-5 md:w-8 md:h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>,
     textColor: 'text-white',
     statusColor: 'text-white/60',
     menuBgClass: 'bg-[#18181b]/80',
@@ -142,7 +142,7 @@ const SCENES: Record<SceneType, SceneConfig> = {
     particleColor: 'rgba(255, 255, 255, 0.5)',
     particleType: 'moon_phase',
     defaultAudioUrl: 'https://actions.google.com/sounds/v1/science_fiction/scifi_drone_loud.ogg',
-    icon: <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>,
+    icon: <svg className="w-5 h-5 md:w-8 md:h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>,
     textColor: 'text-white',
     statusColor: 'text-blue-200',
     menuBgClass: 'bg-[#0f172a]/70',
@@ -154,7 +154,7 @@ const SCENES: Record<SceneType, SceneConfig> = {
     particleColor: '',
     particleType: 'glass_orb',
     defaultAudioUrl: '',
-    icon: <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" /></svg>,
+    icon: <svg className="w-5 h-5 md:w-8 md:h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" /></svg>,
     textColor: 'text-gray-900',
     statusColor: 'text-gray-500',
     menuBgClass: 'bg-[#fbc2eb]/70',
@@ -212,11 +212,9 @@ const WeatherView: React.FC = () => {
   const isActiveRef = useRef(isActive);
   
   // Animation Refs
-  const ripplesRef = useRef<{x: number, y: number, r: number, maxR: number, alpha: number}[]>([]);
-  const lastRippleTimeRef = useRef(0);
+  const speedFactorRef = useRef(0.15);
 
   const [currentTime, setCurrentTime] = useState(new Date());
-  const speedFactorRef = useRef(0.15);
 
   // Clock Mode States
   const [clockThemeId, setClockThemeId] = useState(0);
@@ -430,60 +428,30 @@ const WeatherView: React.FC = () => {
     return () => clearInterval(interval);
   }, [isAutoSwitch, currentScene]); // Reset timer when scene changes manually or automatically
 
-  const addRipple = (clientX: number, clientY: number, target: HTMLElement) => {
-        const now = Date.now();
-        if (now - lastRippleTimeRef.current < 50) return; // Debounce
-        lastRippleTimeRef.current = now;
-
-        const rect = target.getBoundingClientRect();
-        const x = clientX - rect.left;
-        const y = clientY - rect.top;
-        const w = rect.width;
-        const h = rect.height;
-        const dist = Math.max(
-            Math.hypot(x, y),
-            Math.hypot(w - x, y),
-            Math.hypot(x, h - y),
-            Math.hypot(w - x, h - y)
-        );
-
-        ripplesRef.current.push({
-            x,
-            y,
-            r: 0,
-            maxR: dist * 1.5, // Expand beyond screen
-            alpha: 0.5
-        });
-  };
-
   const onTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.targetTouches[0].clientX;
     touchStartY.current = e.targetTouches[0].clientY; // Capture Start Y
-    
-    addRipple(e.targetTouches[0].clientX, e.targetTouches[0].clientY, e.currentTarget as HTMLElement);
   };
 
-  const onMouseDown = (e: React.MouseEvent) => {
-      addRipple(e.clientX, e.clientY, e.currentTarget as HTMLElement);
-  };
-
-  const onTouchEnd = (e: React.TouchEvent) => {
+  const handleSwipe = (endX: number, endY: number) => {
     if (touchStartX.current === null || touchStartY.current === null) return;
     
-    const touchEndX = e.changedTouches[0].clientX;
-    const touchEndY = e.changedTouches[0].clientY;
-    
-    const diffX = touchStartX.current - touchEndX;
-    const diffY = touchStartY.current - touchEndY;
+    const diffX = touchStartX.current - endX;
+    const diffY = touchStartY.current - endY;
     
     // Check dominant direction
     if (Math.abs(diffX) > Math.abs(diffY)) {
-      // Horizontal Swipe
+      // Horizontal Swipe (Screen X)
       
       if (Math.abs(diffX) > 50) {
         if (isClockMode) {
-            // New Logic: Swipe to toggle Clock/Timer in Clock Mode
-            setClockDisplayMode(prev => prev === 'clock' ? 'timer' : 'clock');
+             // In Rotated Clock Mode, Screen X is Visual Vertical (Up/Down)
+             // Swipe visually "Down" (Screen X < -50, so diffX is negative?) 
+             // diffX = start - end. If start < end (swipe right), diffX is negative.
+             // Visual Down = Screen Right -> diffX < -50
+             if (diffX < -50) {
+                 setIsClockMode(false);
+             }
         } else {
             // Normal Scene Navigation
             if (diffX > 0) {
@@ -494,27 +462,49 @@ const WeatherView: React.FC = () => {
         }
       }
     } else {
-      // Vertical Swipe
+      // Vertical Swipe (Screen Y)
       // Swipe UP: StartY > EndY => diffY > 0
       // Swipe DOWN: StartY < EndY => diffY < 0
 
-      if (diffY > 50) {
-         // Swipe Up
-         if (!showMenu && !isClockMode) {
-             setIsClockMode(true);
-         }
-      } else if (diffY < -50) {
-         // Swipe Down
-         if (isClockMode) {
-             setIsClockMode(false);
-         } else if (!showMenu) {
-             setShowMenu(true);
-         }
+      if (Math.abs(diffY) > 50) {
+          if (isClockMode) {
+              // In Rotated Clock Mode, Screen Y is Visual Horizontal (Left/Right)
+              // Swipe visually "Left/Right" to toggle timer
+              setClockDisplayMode(prev => prev === 'clock' ? 'timer' : 'clock');
+          } else {
+              // Normal Portrait Mode
+              if (diffY > 50) {
+                 // Swipe Up
+                 if (!showMenu && !isClockMode) {
+                     setIsClockMode(true);
+                 }
+              } else if (diffY < -50) {
+                 // Swipe Down
+                 if (isClockMode) {
+                     setIsClockMode(false);
+                 } else if (!showMenu) {
+                     setShowMenu(true);
+                 }
+              }
+          }
       }
     }
 
     touchStartX.current = null;
     touchStartY.current = null;
+  };
+
+  const onTouchEnd = (e: React.TouchEvent) => {
+    handleSwipe(e.changedTouches[0].clientX, e.changedTouches[0].clientY);
+  };
+
+  const onMouseDown = (e: React.MouseEvent) => {
+    touchStartX.current = e.clientX;
+    touchStartY.current = e.clientY;
+  };
+
+  const onMouseUp = (e: React.MouseEvent) => {
+    handleSwipe(e.clientX, e.clientY);
   };
 
   const handleReset = () => {
@@ -828,7 +818,6 @@ const WeatherView: React.FC = () => {
                 ctx.fillStyle = config.particleColor.replace(/[\d\.]+\)$/g, `${curOp})`);
                 
                 if (this.type === 'neon_circle') {
-                    // ... (no changes)
                     const isLight = config.menuTheme === 'light';
                     let drawSize = this.size;
                     if (currentScene === 'cityscape' && (this.index === 0 || this.index === 1)) {
@@ -883,7 +872,6 @@ const WeatherView: React.FC = () => {
                     }
 
                 } else if (this.type === 'zen_circle') {
-                    // ... (no changes)
                     const idx1 = Math.floor(this.colorProgress);
                     const idx2 = (idx1 + 1) % ZEN_PALETTE.length;
                     const t = this.colorProgress - idx1;
@@ -950,7 +938,6 @@ const WeatherView: React.FC = () => {
                     return; // Skip standard restore
 
                 } else if (this.type === 'moon_phase') {
-                    // ... (no changes)
                     ctx.fillStyle = '#e6e6e6'; 
                     ctx.shadowBlur = 60;
                     ctx.shadowColor = 'rgba(230, 230, 255, 0.5)';
@@ -972,7 +959,6 @@ const WeatherView: React.FC = () => {
                     ctx.fill();
 
                 } else if (this.type === 'glass_orb') {
-                    // ... (no changes)
                     ctx.fillStyle = `hsla(${this.hue}, 80%, 70%, 0.4)`;
                     ctx.filter = 'blur(40px)'; 
                     ctx.beginPath(); ctx.arc(0, 0, this.size, 0, Math.PI * 2); ctx.fill(); ctx.filter = 'none';
@@ -1015,7 +1001,6 @@ const WeatherView: React.FC = () => {
 
       // Dynamic Background for Geometry Scene
       if (currentScene === 'geometry') {
-          // ... (no changes)
           const factor = speedFactorRef.current;
           geoHue += 0.05 * (factor > 0.2 ? factor : 0.2); 
           const h = geoHue % 360;
@@ -1033,25 +1018,6 @@ const WeatherView: React.FC = () => {
           }
       });
       
-      // Draw Ripples
-      if (ripplesRef.current.length > 0) {
-          ctx.save();
-          ripplesRef.current.forEach(r => {
-             // Increased expansion speed from 12 to 35
-             r.r += 35 * (speedFactorRef.current > 0.5 ? 1 : 0.5); 
-             r.alpha = 0.5 * (1 - (r.r / r.maxR)); 
-             if (r.alpha > 0) {
-                 ctx.beginPath();
-                 ctx.arc(r.x, r.y, r.r, 0, Math.PI * 2);
-                 ctx.fillStyle = `rgba(255, 255, 255, ${r.alpha})`;
-                 ctx.fill();
-             }
-          });
-          ctx.restore();
-          // Cleanup finished ripples
-          ripplesRef.current = ripplesRef.current.filter(r => r.alpha > 0);
-      }
-
       animationId = requestAnimationFrame(animate);
     };
     animate();
@@ -1115,6 +1081,8 @@ const WeatherView: React.FC = () => {
       onTouchStart={onTouchStart}
       onMouseDown={onMouseDown} // Add mouse support
       onTouchEnd={onTouchEnd}
+      onMouseUp={onMouseUp}
+      onMouseLeave={onMouseUp}
     >
       {/* Key prop ensures the audio element is destroyed and recreated when scene changes */}
       <audio 
@@ -1127,13 +1095,13 @@ const WeatherView: React.FC = () => {
       />
 
       {/* Clock Mode Overlay (Flip Clock Style) */}
-      <div className={`absolute inset-0 z-[200] ${currentTheme.bg} flex items-center justify-center transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] ${isClockMode ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'}`}>
-          {/* Rotate Wrapper for Pseudo-Landscape on Mobile Portrait */}
-          <div className="relative w-full h-full transform transition-transform duration-500 md:rotate-0 rotate-90 md:w-full md:h-full w-[100vh] h-[100vw] flex flex-col justify-center items-center">
+      <div className={`absolute inset-0 z-[200] ${currentTheme.bg} transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] ${isClockMode ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+          {/* Rotated Container for Landscape Mode - Adaptive logic for Portrait/Landscape screens */}
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 portrait:rotate-90 portrait:w-[100vh] portrait:h-[100vw] landscape:rotate-0 landscape:w-full landscape:h-full flex flex-col justify-center items-center overflow-hidden">
               
-              {/* Interaction Layer for Long Press / Double Click */}
+              {/* Interaction Layer */}
               <div 
-                  className="flex items-center gap-[4vh] md:gap-12"
+                  className="flex flex-row items-center gap-[4vmin] w-full justify-center"
                   onMouseDown={handleLongPressStart}
                   onMouseUp={handleLongPressEnd}
                   onMouseLeave={handleLongPressEnd}
@@ -1141,62 +1109,62 @@ const WeatherView: React.FC = () => {
                   onTouchEnd={handleLongPressEnd}
                   onDoubleClick={toggleStopwatch}
               >
-                  {/* Left Card (Hour or Min) */}
-                  <div className={`relative w-[40vh] h-[40vh] max-w-[82vw] max-h-[82vw] md:w-[35vw] md:h-[35vw] md:max-w-[50vh] md:max-h-[50vh] ${currentTheme.card} rounded-[3rem] shadow-2xl flex items-center justify-center overflow-hidden transition-colors duration-500`}>
+                  {/* Hour Card */}
+                  <div className={`relative w-[58vmin] h-[58vmin] ${currentTheme.card} rounded-[4vmin] shadow-2xl flex items-center justify-center overflow-hidden transition-colors duration-500`}>
                        {/* Label */}
-                       <span className={`absolute top-4 left-6 text-xl md:text-3xl font-bold ${currentTheme.accent} font-sans tracking-widest`}>{displayLabel}</span>
+                       <span className={`absolute top-[4vmin] left-[4vmin] text-[3vmin] font-bold ${currentTheme.accent} font-sans tracking-widest`}>{displayLabel}</span>
                        {/* Number */}
-                       <span className={`text-[24vh] md:text-[22vw] font-bold ${currentTheme.text} leading-none tracking-tighter font-sans select-none`}>{displayH}</span>
+                       <span className={`text-[38vmin] font-bold ${currentTheme.text} leading-none tracking-tighter font-sans select-none`}>{displayH}</span>
                        {/* Divider */}
                        <div className={`absolute top-1/2 left-0 w-full h-[2px] ${currentTheme.divider}`}></div>
                   </div>
 
-                  {/* Right Card (Min or Sec) */}
-                  <div className={`relative w-[40vh] h-[40vh] max-w-[82vw] max-h-[82vw] md:w-[35vw] md:h-[35vw] md:max-w-[50vh] md:max-h-[50vh] ${currentTheme.card} rounded-[3rem] shadow-2xl flex items-center justify-center overflow-hidden transition-colors duration-500`}>
+                  {/* Minute Card */}
+                  <div className={`relative w-[58vmin] h-[58vmin] ${currentTheme.card} rounded-[4vmin] shadow-2xl flex items-center justify-center overflow-hidden transition-colors duration-500`}>
                        {/* Number */}
-                       <span className={`text-[24vh] md:text-[22vw] font-bold ${currentTheme.text} leading-none tracking-tighter font-sans select-none`}>{displayM}</span>
+                       <span className={`text-[38vmin] font-bold ${currentTheme.text} leading-none tracking-tighter font-sans select-none`}>{displayM}</span>
                        {/* Divider */}
                        <div className={`absolute top-1/2 left-0 w-full h-[2px] ${currentTheme.divider}`}></div>
                        
                        {/* Seconds/MS Floating Badge */}
                        {(clockDisplayMode === 'clock' || clockDisplayMode === 'timer') && (
-                           <div className={`absolute bottom-6 right-6 ${currentTheme.bg} shadow-md border ${currentTheme.divider} rounded-xl px-4 py-2`}>
-                               <span className={`text-2xl md:text-4xl font-bold ${currentTheme.text} font-mono tracking-widest`}>{displayS}</span>
+                           <div className={`absolute bottom-[4vmin] right-[4vmin] ${currentTheme.bg} shadow-md border ${currentTheme.divider} rounded-xl px-[2vmin] py-[0.5vmin]`}>
+                               <span className={`text-[3vmin] font-bold ${currentTheme.text} font-mono tracking-widest`}>{displayS}</span>
                            </div>
                        )}
                   </div>
               </div>
 
-              <div className="text-center animate-pulse z-20 mt-8">
+              {/* Subtitle - Floating (Absolute) to prevent affecting center alignment */}
+              <div className="absolute bottom-16 w-full text-center animate-pulse z-20 pointer-events-none">
                    <p className={`text-xs ${currentTheme.sub} tracking-[0.3em] font-medium`}>
                       {clockDisplayMode === 'timer' ? '双击启停 · 左右滑动切换' : '长按换肤 · 左右滑动切换'}
                    </p>
               </div>
 
+              {/* Close Button */}
               <button 
                  onClick={(e) => { e.stopPropagation(); setIsClockMode(false); }}
-                 className="absolute bottom-8 right-12 md:bottom-12 md:right-12 text-gray-400 hover:text-gray-600 transition-colors z-50"
-                 style={{ bottom: '30px', right: '30px' }} // Manual positioning override to ensure it's not hidden
+                 className="absolute bottom-8 right-12 text-gray-400 hover:text-gray-600 transition-colors z-50 p-4"
               >
                  <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
               </button>
           </div>
 
-          {/* Theme Selector Modal */}
+          {/* Theme Selector - Rotated separately to match view */}
           {showThemeSelector && (
               <div 
                 className="absolute inset-0 z-[210] bg-black/60 backdrop-blur-sm flex items-center justify-center animate-in fade-in duration-300"
                 onClick={() => setShowThemeSelector(false)}
               >
-                  {/* Rotate Modal Content too for consistent orientation */}
-                  <div className="transform md:rotate-0 rotate-90 bg-white/90 backdrop-blur-xl p-8 rounded-[3rem] shadow-2xl flex flex-col items-center max-w-sm" onClick={e => e.stopPropagation()}>
+                  <div className="transform rotate-90 bg-white/90 backdrop-blur-xl p-8 rounded-[3rem] shadow-2xl flex flex-col items-center max-w-xs mx-6" onClick={e => e.stopPropagation()}>
                        <h3 className="text-gray-500 text-xs font-bold uppercase tracking-[0.3em] mb-6">选择主题</h3>
                        <div className="grid grid-cols-3 gap-6">
                            {CLOCK_THEMES.map((theme) => (
                                <button 
                                   key={theme.id}
                                   onClick={() => { setClockThemeId(theme.id); setShowThemeSelector(false); }}
-                                  className={`w-16 h-16 rounded-full flex items-center justify-center shadow-lg transition-transform hover:scale-110 active:scale-95 border-2 ${clockThemeId === theme.id ? 'border-blue-500' : 'border-transparent'}`}
+                                  className={`w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition-transform hover:scale-110 active:scale-95 border-2 ${clockThemeId === theme.id ? 'border-blue-500' : 'border-transparent'}`}
                                   style={{ background: theme.id === 1 ? '#000' : theme.id === 2 ? '#faf9f6' : '#f3f4f6' }}
                                >
                                    {clockThemeId === theme.id && <div className="w-2 h-2 rounded-full bg-blue-500 box-content border-2 border-white" />}
@@ -1248,7 +1216,7 @@ const WeatherView: React.FC = () => {
         >
           <div className="absolute inset-0 bg-black/50 backdrop-blur-xl" />
           <div 
-            className={`relative ${activeConfig.menuBgClass} backdrop-blur-2xl p-12 rounded-[5rem] w-[88%] max-w-sm flex flex-col items-center shadow-2xl transition-colors duration-500`}
+            className={`relative ${activeConfig.menuBgClass} backdrop-blur-2xl p-12 rounded-[5rem] w-[88%] max-w-sm md:max-w-xl flex flex-col items-center shadow-2xl transition-colors duration-500`}
             onClick={(e) => e.stopPropagation()}
           >
             <h3 className={`${isLightMenu ? 'text-black/40' : 'text-white/40'} text-[10px] uppercase tracking-[0.4em] font-bold mb-10 transition-colors duration-500`}>模式设定</h3>
@@ -1264,7 +1232,7 @@ const WeatherView: React.FC = () => {
                       const val = parseInt(e.target.value);
                       if (!isNaN(val)) setFocusMinutes(Math.max(1, Math.min(180, val)));
                     }}
-                    className={`text-2xl font-bold ${isLightMenu ? 'text-black border-black/20 focus:border-black' : 'text-white border-white/20 focus:border-white'} min-w-[3rem] text-center bg-transparent border-b outline-none p-1 w-20 transition-colors duration-500`}
+                    className={`text-2xl md:text-4xl font-bold ${isLightMenu ? 'text-black border-black/20 focus:border-black' : 'text-white border-white/20 focus:border-white'} min-w-[3rem] text-center bg-transparent border-b outline-none p-1 w-20 transition-colors duration-500`}
                   />
                   <button onClick={() => setFocusMinutes(Math.min(120, focusMinutes + 1))} className={`w-10 h-10 rounded-full ${isLightMenu ? 'bg-black/10 text-black' : 'bg-white/10 text-white'} flex items-center justify-center active:scale-90 transition-colors duration-500`}>＋</button>
                 </div>
@@ -1280,7 +1248,7 @@ const WeatherView: React.FC = () => {
                       const val = parseInt(e.target.value);
                       if (!isNaN(val)) setRestMinutes(Math.max(1, Math.min(60, val)));
                     }}
-                    className={`text-2xl font-bold ${isLightMenu ? 'text-black border-black/20 focus:border-black' : 'text-white border-white/20 focus:border-white'} min-w-[3rem] text-center bg-transparent border-b outline-none p-1 w-20 transition-colors duration-500`}
+                    className={`text-2xl md:text-4xl font-bold ${isLightMenu ? 'text-black border-black/20 focus:border-black' : 'text-white border-white/20 focus:border-white'} min-w-[3rem] text-center bg-transparent border-b outline-none p-1 w-20 transition-colors duration-500`}
                   />
                   <button onClick={() => setRestMinutes(Math.min(60, restMinutes + 1))} className={`w-10 h-10 rounded-full ${isLightMenu ? 'bg-black/10 text-black' : 'bg-white/10 text-white'} flex items-center justify-center active:scale-90 transition-colors duration-500`}>＋</button>
                 </div>
@@ -1302,7 +1270,7 @@ const WeatherView: React.FC = () => {
         >
           <div className="absolute inset-0 bg-black/60 backdrop-blur-xl" />
           <div 
-            className={`relative ${activeConfig.menuBgClass} backdrop-blur-2xl p-8 rounded-[40px] w-[90%] max-w-sm flex flex-col items-center shadow-2xl transition-colors duration-500 max-h-[80vh] overflow-y-auto`}
+            className={`relative ${activeConfig.menuBgClass} backdrop-blur-2xl p-8 rounded-[40px] w-[90%] max-w-sm md:max-w-2xl flex flex-col items-center shadow-2xl transition-colors duration-500 max-h-[80vh] overflow-y-auto`}
             onClick={(e) => e.stopPropagation()}
           >
             <h3 className={`${isLightMenu ? 'text-black/40' : 'text-white/40'} text-[12px] uppercase tracking-[0.3em] font-bold mb-8 transition-colors duration-500`}>高级设置</h3>
@@ -1384,11 +1352,11 @@ const WeatherView: React.FC = () => {
           onClick={() => setShowMenu(false)}
         >
           <div 
-            className={`flex flex-col ${activeConfig.menuBgClass} backdrop-blur-2xl rounded-[52px] p-8 max-w-[90vw] border ${isLightMenu ? 'border-black/5 shadow-xl' : 'border-white/10 shadow-2xl'} transition-colors duration-500 max-h-[85vh] overflow-y-auto`}
+            className={`flex flex-col ${activeConfig.menuBgClass} backdrop-blur-2xl rounded-[52px] p-8 max-w-[90vw] md:max-w-[600px] border ${isLightMenu ? 'border-black/5 shadow-xl' : 'border-white/10 shadow-2xl'} transition-colors duration-500 max-h-[85vh] overflow-y-auto`}
             onClick={(e) => e.stopPropagation()}
           >
             {/* Grid Layout with dynamic ordering */}
-            <div className="grid grid-cols-3 gap-3 mb-8">
+            <div className="grid grid-cols-3 md:grid-cols-4 gap-3 mb-8">
               {sceneOrder.map((sceneId, index) => (
                 <div key={sceneId} className="relative group">
                   <button
@@ -1465,29 +1433,29 @@ const WeatherView: React.FC = () => {
 
         {/* Scene Title */}
         <div className="flex flex-col items-center mt-32 pointer-events-none">
-          <h1 className="text-[14px] font-bold tracking-[1.2em] uppercase opacity-40 text-white text-center drop-shadow-md">
+          <h1 className="text-[14px] md:text-[24px] font-bold tracking-[1.2em] uppercase opacity-40 text-white text-center drop-shadow-md">
             {isRestMode ? '休整片刻' : activeConfig.name}
           </h1>
         </div>
 
         {/* Timer Main Area */}
-        <div className="flex-1 flex flex-col justify-end px-6 pb-10 pt-12">
+        <div className="flex-1 flex flex-col justify-end px-6 pb-10 pt-12 md:pb-20">
           <div className="flex flex-col items-start transition-all duration-700">
             <div 
               onClick={(e) => {
                 e.stopPropagation();
                 setIsSettingTime(true);
               }}
-              className={`text-[92px] font-light tracking-tighter leading-none transition-colors duration-1000 ${activeConfig.textColor} drop-shadow-sm cursor-pointer hover:opacity-80 active:scale-95 transform transition-transform`}
+              className={`text-[92px] md:text-[180px] font-light tracking-tighter leading-none transition-colors duration-1000 ${activeConfig.textColor} drop-shadow-sm cursor-pointer hover:opacity-80 active:scale-95 transform transition-transform`}
             >
               {formatTime(timeLeft)}
             </div>
             
             <div className="mt-8 flex items-center space-x-6 px-1">
-               <div className={`w-3.5 h-3.5 rounded-full transition-all duration-700 ${
+               <div className={`w-3.5 h-3.5 md:w-5 md:h-5 rounded-full transition-all duration-700 ${
                  isActive ? (isRestMode ? 'bg-blue-400 shadow-[0_0_20px_rgba(96,165,250,0.8)]' : 'bg-green-400 animate-pulse shadow-[0_0_20px_rgba(74,222,128,0.8)]') : 'bg-gray-300 shadow-inner'
                }`}></div>
-               <span className={`text-[13px] font-bold tracking-[0.5em] transition-colors duration-1000 uppercase ${activeConfig.statusColor}`}>
+               <span className={`text-[13px] md:text-[20px] font-bold tracking-[0.5em] transition-colors duration-1000 uppercase ${activeConfig.statusColor}`}>
                  {isActive ? (isRestMode ? '正在休息' : '专注中') : '轻触开始'}
                </span>
             </div>
